@@ -1,0 +1,15 @@
+{
+    "name": "Compiladores ANTLR4",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "postCreateCommand": "./.devcontainer/postCreate.sh",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash"
+        }
+      }
+    }
+  }
+  

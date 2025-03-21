@@ -1,0 +1,21 @@
+name: Validar configuración ANTLR
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verificar instalación de Java y Python
+        run: |
+          java -version
+          python3 --version
+
+      - name: Descargar ANTLR y ejecutar prueba
+        run: |
+          curl -O https://www.antlr.org/download/antlr-4.9.3-complete.jar
+          java -jar antlr-4.9.3-complete.jar -version

@@ -1,12 +1,13 @@
 #!/bin/bash
 
-echo "Configurando alias para ANTLR..."
+echo "🔧 Configurando entorno para ANTLR..."
 
-echo 'export ANTLR_JAR=/usr/local/lib/antlr/antlr-4.9.3-complete.jar' >> ~/.bashrc
-echo 'export CLASSPATH=".:$ANTLR_JAR:$CLASSPATH"' >> ~/.bashrc
-echo 'alias antlr4="java -jar $ANTLR_JAR"' >> ~/.bashrc
-echo 'alias antlr4-parse="java -cp $ANTLR_JAR org.antlr.v4.gui.TestRig"' >> ~/.bashrc
+# Activar los alias desde el perfil global
+if [ -f /etc/profile.d/antlr.sh ]; then
+    source /etc/profile.d/antlr.sh
+    echo "✅ Alias de ANTLR cargados desde /etc/profile.d/antlr.sh"
+else
+    echo "⚠️ No se encontró /etc/profile.d/antlr.sh. Verifica que el Dockerfile lo haya creado correctamente."
+fi
 
-source ~/.bashrc
-
-echo "✅ ANTLR4 configurado correctamente"
+antlr4 -version || echo "⚠️ ANTLR4 no está accesible aún."

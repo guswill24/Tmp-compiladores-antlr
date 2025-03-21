@@ -16,9 +16,11 @@ Abre la terminal en tu Codespace y ejecuta:
 
 ```bash
 antlr4
+```
 
 ## ⚠️ ¿No funciona el comando `antlr4`?
 Abre una nueva terminal o ejecuta:
 
 ```bash
 source ~/.bashrc
+```

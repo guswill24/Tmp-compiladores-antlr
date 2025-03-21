@@ -1,21 +1,43 @@
-name: Validar configuración ANTLR
+name: Validar entorno de ANTLR en Codespaces
 
 on:
   push:
   pull_request:
 
 jobs:
-  validate:
+  validar-entorno:
+    name: Verificar instalación y funcionamiento de ANTLR4
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Verificar instalación de Java y Python
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Verificar instalación de Java y Python
         run: |
+          echo "✅ Verificando que Java esté instalado:"
           java -version
+          echo "✅ Verificando que Python esté instalado:"
           python3 --version
 
-      - name: Descargar ANTLR y ejecutar prueba
+      - name: 📦 Descargar ANTLR 4.9.3
         run: |
+          echo "⬇️ Descargando ANTLR 4.9.3..."
           curl -O https://www.antlr.org/download/antlr-4.9.3-complete.jar
-          java -jar antlr-4.9.3-complete.jar -version
+          echo "✅ ANTLR descargado correctamente"
+
+      - name: 🧪 Probar funcionamiento básico de ANTLR
+        run: |
+          echo "🧪 Ejecutando ANTLR para mostrar el mensaje de ayuda:"
+          java -jar antlr-4.9.3-complete.jar
+
+      - name: 🧰 Probar compilación de una gramática mínima
+        run: |
+          echo "📄 Creando una gramática de prueba llamada Mini.g4..."
+          echo "grammar Mini; prog: ID EOF; ID: [a-z]+;" > Mini.g4
+
+          echo "⚙️ Compilando la gramática con ANTLR..."
+          java -jar antlr-4.9.3-complete.jar Mini.g4
+
+          echo "✅ Gramática compilada exitosamente. ¡ANTLR está listo para usarse!"
+

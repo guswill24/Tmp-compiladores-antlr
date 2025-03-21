@@ -31,3 +31,4 @@ RUN mkdir -p /usr/local/lib/antlr && \
 RUN echo 'source /etc/profile.d/antlr.sh' >> /etc/bash.bashrc
 # Que el archivo postCreate.sh exista y tenga permisos:
 RUN chmod +x .devcontainer/postCreate.sh || true
+RUN echo "source /etc/profile.d/antlr.sh" >> /root/.bashrc

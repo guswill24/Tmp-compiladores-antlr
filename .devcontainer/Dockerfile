@@ -30,4 +30,4 @@ RUN mkdir -p /usr/local/lib/antlr && \
 # Cargar configuración ANTLR automáticamente en todos los shells interactivos
 RUN echo 'source /etc/profile.d/antlr.sh' >> /etc/bash.bashrc
 # Que el archivo postCreate.sh exista y tenga permisos:
-RUN chmod +x /workspaces/Prueba_compiladores/.devcontainer/postCreate.sh || true
+RUN chmod +x .devcontainer/postCreate.sh || true

@@ -89,6 +89,7 @@ A continuación, te guiamos paso a paso para probar una gramática personalizada
 
 ```bash
 antlr4 MiGramatica.g4
+antlr4 -Dlanguage=Python3 MiGramatica.g4
 ```
 
 📘 **¿Qué hace este comando?**  
@@ -96,10 +97,21 @@ Genera los archivos `MiGramaticaLexer.py`, `MiGramaticaParser.py`, y otros neces
 
 ---
 
+## 1️⃣ Compilar los archivos Java
+
+```bash
+javac -cp ".:$ANTLR_JAR" *.java
+```
+
+📘 **¿Qué hace este comando?**  
+Compila todos los archivos generados
+
+---
+
 ## 2️⃣ Ver análisis léxico (tokens)
 
 ```bash
-echo "x = 5 + 3 * 2;" | antlr4-parse MiGramatica.g4 programa -tokens
+echo "x = 5 + 3 * 2;" | java -cp ".:$ANTLR_JAR" org.antlr.v4.gui.TestRig MiGramatica programa -tokens
 ```
 
 🔍 **Explicación:**
@@ -120,7 +132,7 @@ echo "x = 5 + 3 * 2;" | antlr4-parse MiGramatica.g4 programa -tokens
 ## 3️⃣ Ver el árbol sintáctico en interfaz gráfica
 
 ```bash
-echo "x = 5 + 3 * 2;" | antlr4-parse MiGramatica.g4 programa -gui
+echo "x = 5 + 3 * 2;" | java -cp ".:$ANTLR_JAR" org.antlr.v4.gui.TestRig MiGramatica programa -gui
 ```
 
 🧠 **¿Qué hace esto?**
@@ -134,7 +146,7 @@ echo "x = 5 + 3 * 2;" | antlr4-parse MiGramatica.g4 programa -gui
 ## 4️⃣ Ver el árbol sintáctico en formato texto
 
 ```bash
-echo "x = y + z * w / 2 - 1;" | antlr4-parse MiGramatica.g4 programa -tree
+echo "x = 5 + 3 * 2;" | java -cp ".:$ANTLR_JAR" org.antlr.v4.gui.TestRig MiGramatica programa -tree
 ```
 
 📘 **Explicación:**

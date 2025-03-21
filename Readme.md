@@ -1,5 +1,8 @@
 # Compiladores - Entorno Codespace con ANTLR 4.9.3
 
+![Validación de entorno ANTLR](https://github.com/guswill24/Tmp-compiladores-antlr/actions/workflows/validate-setup.yml/badge.svg)
+
+
 Este repositorio está configurado para que trabajes directamente con ANTLR4 en GitHub Codespaces sin necesidad de configuraciones manuales.
 
 ## ✅ Herramientas instaladas automáticamente
